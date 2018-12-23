@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>first angularjs try</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="angularJS.js"></script>
+    <script src="app.js"></script>
+    <script src="calculate-svc.js"></script>
+    <script src="appctrl.js"></script>
+</head>
+<body >
+    
+
+    <div ng-app="app">
+        <div class="wrapper" ng-controller="appCtrl">
+            <div>
+                <button ng-click="addRow()">Add row</button>
+            </div>
+            <div ng-repeat="item in items">
+                <select ng-model="item.sign" ng-change="calculateResult()">
+                    <option>+</option>
+                    <option>-</option>
+                </select>
+                <input type="number" ng-model="item.value" ng-change="calculateResult()" min="0"/>
+                <button ng-click="deleteRow($index)">Delete</button>
+                <button  ng-show="!item.disable" ng-click="disableEnableRow($index)">Disable</button>
+                <button  ng-show="item.disable" ng-click="disableEnableRow($index)">Enable</button>
+            </div>
+            <div>
+                Result: {{result}}
+            </div>
+        </div>
+    </div>
+    
+
+
+</body>
+</html>
